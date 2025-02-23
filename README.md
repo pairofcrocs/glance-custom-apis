@@ -9,7 +9,7 @@ This is a collection of some of the APIs that I've built for the amazing [Glace 
 A web-based display for showing the status of active Plex streams, including user details, stream progress, and thumbnails. All via the Tautulli API
 
 ![image](https://github.com/user-attachments/assets/bfa668e8-10bc-4e9c-8511-87c1a04ea794)
-
+![image](https://github.com/user-attachments/assets/7d4081db-7411-4646-adde-ecdb95054848)
 
 ## Features
 - Displays active Plex streams with user information and playback details.
@@ -19,7 +19,7 @@ A web-based display for showing the status of active Plex streams, including use
 - Handles cases when no streams are active.
 
 ## Usage
-1. Copy the content from "PlexStreams.yml" into your Glance.yml
+1. Copy the content from [PlexStreams.yml](https://raw.githubusercontent.com/pairofcrocs/glance-custom-apis/refs/heads/main/PlexStreams.yml) into your glance.yml
 2. Change the URL and API key of your Tautulli setup
 3. Enjoy!
 
@@ -36,3 +36,14 @@ A web-based display for showing the status of active Plex streams, including use
 - Verify API endpoint permissions.
 - Double-check thumbnail paths for accuracy.
 
+---
+
+# Plex Stream Status Display - Minimal
+![image](https://github.com/user-attachments/assets/c560072f-2306-4c92-aaa8-890f236706ca)
+![image](https://github.com/user-attachments/assets/7d4081db-7411-4646-adde-ecdb95054848)
+
+It's the same basic concept as the over Custom API (for the minimalists)
+
+Copy the contents of [PlexStreamsMinimal.yml](https://raw.githubusercontent.com/pairofcrocs/glance-custom-apis/refs/heads/main/PlexStreamsMinimal.yml) into you glance.yml, edit the URL and replace with your Tautulli API key.
+
+---
