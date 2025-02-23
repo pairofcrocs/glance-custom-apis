@@ -1,0 +1,25 @@
+- type: custom-api
+  title: Plex Streams
+  cache: 1s
+  url: http://192.168.1.@@:8181/api/v2?apikey=@@@@@@@@@@@@@@@@@@@@@@@@@@@@&cmd=get_activity
+  template: |
+    <div class="monitor-site flex items-center gap-15">
+      <img class="docker-container-icon flat-icon cached finished-transition" src="https://www.svgrepo.com/show/306579/plex.svg" alt="" loading="lazy">
+      <div class="min-width-0">
+        {{ if eq (.JSON.String "response.data.stream_count") "0" }}
+          <a class="size-h3 color-highlight text-truncate block">Nothing to see here :)</a>
+        {{ else }}
+          {{ range $session := .JSON.Array "response.data.sessions" }}
+            {{ with $session.String "grandparent_title" }}
+              <a class="size-h3 color-highlight text-truncate block" title="{{ $session.String "title" }}">
+                {{ . }} - {{ $session.String "user" }}
+              </a>
+            {{ else }}
+              <a class="size-h3 color-highlight text-truncate block" title="{{ $session.String "title" }}">
+                {{ $session.String "title" }} - {{ $session.String "user" }}
+              </a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
