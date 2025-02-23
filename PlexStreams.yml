@@ -1,0 +1,55 @@
+- type: custom-api
+  title: Plex Streams
+  cache: 1s
+  url: http://192.168.1.@@:8181/api/v2?apikey=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&cmd=get_activity
+  template: |
+    {{ if eq (.JSON.String "response.data.stream_count") "0" }}
+      <div class="twitch-category thumbnail-parent">
+        <div class="flex gap-10 items-start">
+          <img 
+            class="docker-container-icon flat-icon cached finished-transition" 
+            loading="lazy" 
+            src="https://www.svgrepo.com/show/306579/plex.svg" 
+            alt="Plex Logo">
+          <div class="min-width-0">
+            <a class="size-h3 color-highlight text-truncate block" title="No Streams">Nothing to see here :)</a>
+          </div>
+        </div>
+      </div>
+    {{ else }}
+      <ul class="list list-gap-14 collapsible-container" data-collapse-after="5">
+        {{ range $session := .JSON.Array "response.data.sessions" }}
+          <li class="twitch-category thumbnail-parent">
+            <div class="flex gap-10 items-start">
+              <img 
+                class="twitch-category-thumbnail thumbnail loaded finished-transition" 
+                style="object-position: top; filter: brightness(1); opacity: 1;" 
+                loading="lazy" 
+                src="http://192.168.1.@@:32400{{ if $session.String "grandparent_thumb" }}{{ $session.String "grandparent_thumb" }}{{ else }}{{ $session.String "thumb" }}{{ end }}" 
+                alt="{{ $session.String "title" }}">
+              <div class="min-width-0">
+                <!-- Hover shows title; display shows grandparent_title if present -->
+                <a class="size-h3 color-highlight text-truncate block" 
+                  title="{{ if $session.String "title" }}{{ $session.String "title" }}{{ else }}No Title{{ end }}">
+                  {{ if $session.String "grandparent_title" }}{{ $session.String "grandparent_title" }}{{ else }}{{ $session.String "title" }}{{ end }}
+                </a>
+                <ul class="list-horizontal-text">
+                  <li>{{ $session.String "viewers" }}</li>
+                </ul>
+                <ul class="list-horizontal-text flex-nowrap">
+                  <li class="shrink-0">{{ $session.String "transcode_decision" }}</li>
+                  <li class="text-truncate min-width-0" title="{{ $session.String "user" }}">{{ $session.String "user" }}</li>
+                </ul>
+                
+                <!-- Progress bar -->
+                <div style="margin-top: 10px; width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
+                  <div style="width: 100%; height: 8px; background-color: #737387; border-radius: 4px; margin-top: 5px;">
+                    <div style="height: 100%; background-color: #d9c38c; border-radius: 4px; width: {{ $session.String "progress_percent" }}%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
