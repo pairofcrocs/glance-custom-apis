@@ -47,3 +47,37 @@ It's the same basic concept as the over Custom API (for the minimalists)
 Copy the contents of [PlexStreamsMinimal.yml](https://raw.githubusercontent.com/pairofcrocs/glance-custom-apis/refs/heads/main/PlexStreamsMinimal.yml) into you glance.yml, edit the URL and replace with your Tautulli API key.
 
 ---
+
+# Glance Private Tracker Widget
+Adds a widget to Glance that monitors your private tracker accounts using Glance's custom API.
+
+![image](https://github.com/user-attachments/assets/4971224a-3f79-479d-b614-e0ca8459aa1e)
+
+Included are:
+
+[PrivateTracker.yml](https://raw.githubusercontent.com/pairofcrocs/glance-custom-apis/refs/heads/main/PrivateTracker/PrivateTracker.yml) – Front-end code to integrate the widget into your Glance setup.
+
+[FlaskServer.py](https://raw.githubusercontent.com/pairofcrocs/glance-custom-apis/refs/heads/main/PrivateTracker/FlaskServer.py) – A simple server to handle requests from the scraper script.
+
+
+You should be able to spin up the server, and send requests to it via a POST request:
+```
+{
+    "red_ratio": ****,
+    "red_class": ****,
+    "red_messages": ****,
+    "btn_lumens": ****,
+    "btn_bp": ****,
+    "btn_hnr": ****
+    "btn_messages": ****,
+    "ggn_ratio": ****,
+    "ggn_gold": ****,
+    "ggn_messages": ****,
+    "ptp_bonus": ****,
+    "ptp_message": ****,
+    "ptp_ratio": ****
+}
+```
+---
+For now, this repository focuses on the front end. The backend is currently a rough but functional Python script—I plan to refine and optimize it before making it publicly shareable. :)
+
