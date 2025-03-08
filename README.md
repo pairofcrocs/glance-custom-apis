@@ -51,7 +51,7 @@ Copy the contents of [PlexStreamsMinimal.yml](https://raw.githubusercontent.com/
 # Glance Private Tracker Widget
 Adds a widget to Glance that monitors your private tracker accounts using Glance's custom API.
 
-![image](https://github.com/user-attachments/assets/4971224a-3f79-479d-b614-e0ca8459aa1e)
+![image](https://github.com/user-attachments/assets/55c592ea-a48a-46cf-adbe-90ed20dd72fc)
 
 Included are:
 
