@@ -26,10 +26,6 @@
                 style="object-position: top; filter: brightness(1); opacity: 1;" 
                 loading="lazy" 
                 src="http://192.168.1.@@:32400{{ if $session.String "grandparent_thumb" }}{{ $session.String "grandparent_thumb" }}{{ else }}{{ $session.String "thumb" }}{{ end }}?X-Plex-Token=@@@@@@@@@@@@"
-
-1
-March 14, 2025
-" 
                 alt="{{ $session.String "title" }}">
               <div class="min-width-0">
                 <!-- Hover shows title; display shows grandparent_title if present -->
